@@ -1,7 +1,7 @@
 import ross as rs
 import numpy as np
 
-# Classic Instantiation of the rotor 회전체 설정
+# Classic Instantiation of the rotor
 shaft_elements = []
 bearing_seal_elements = []
 disk_elements = []
@@ -25,7 +25,6 @@ rotor595c = rs.Rotor(
     disk_elements=disk_elements,
 )
 
-rotor595c.plot_rotor()
 # From_section class method instantiation.
 bearing_seal_elements = []
 disk_elements = []
@@ -51,23 +50,6 @@ rotor595fs = rs.Rotor.from_section(
     odl_data=o_d,
     material_data=steel,
 )
-rotor595fs.plot_rotor()
+rotor595c.plot_rotor().show()
 
-# Obtaining results for w=0
-
-modal595c = rotor595c.run_modal(0)
-modal595fs = rotor595fs.run_modal(0)
-
-print("Normal Instantiation =", modal595c.wn * 60 / (2 * np.pi), "[RPM]")
-print("\n")
-print("From Section Instantiation =", modal595fs.wn * 60 / (2 * np.pi), "[RPM]")
-
-# Obtaining results for w=4000RPM
-
-modal595c = rotor595c.run_modal(4000 * np.pi / 30)  # speed input in rad/s
-print("Normal Instantiation =", modal595c.wn * 60 / (2 * np.pi), "[RPM]")
-
-# The input units must be according to your unit standard system
-campbell = rotor595c.run_campbell(np.linspace(0, 4000 * np.pi / 30, 50))
-# Plotting frequency in RPM
-campbell.plot(frequency_units="rpm")
+rotor595fs.plot_rotor().show()
