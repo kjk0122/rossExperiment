@@ -12,7 +12,7 @@ for i in range(6):
 disk_elements.append(
     rs.DiskElement.from_geometry(n=2, material=steel, width=0.07, i_d=0.05, o_d=0.28)
 )
-
+# 디스크 요소 추가
 disk_elements.append(
     rs.DiskElement.from_geometry(n=4, material=steel, width=0.07, i_d=0.05, o_d=0.35)
 )
